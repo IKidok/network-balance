@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:5.7
+    restart: always
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    volumes:
+      - ./mysqldata:/var/lib/mysql
+#  backend:
+#    container_name: backend-nest
+#    build:
+#      context: ./
+#    depends_on:
+#      - mysql
+#    ports:
+#      - '${PORT}:${PORT}'
+#    restart: unless-stopped
+#    environment:
+#      - PORT=${PORT}
+#      - HOST=mysql
+#      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+#      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+#      - MYSQL_USER=${MYSQL_USER}
+#      - MYSQL_DATABASE=${MYSQL_DATABASE}
